@@ -3,6 +3,4 @@ DecodeSTORM is an user-friendly ImageJ plug-in for quantitative data analysis in
 # Installation and Use
 The installation and use of DecodeSTORM are detailed in the User Guide. We also provide examples.
 # Dependency
-The development of DecodeSTORM depend on Armadillo and OpenCV. 
-Armadillo download address: http://arma.sourceforge.net/download.html
-OpenCV download address: https://opencv.org/releases/
+The development of DecodeSTORM depend on Armadillo and OpenCV. Armadillo download address: http://arma.sourceforge.net/download.html OpenCV download address: https://opencv.org/releases/
