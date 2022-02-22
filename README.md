@@ -5,4 +5,4 @@ The installation and use of DecodeSTORM are detailed in the User Guide. We also 
 # Dependency
 The development of DecodeSTORM depend on Armadillo and OpenCV. 
 Armadillo download address: http://arma.sourceforge.net/download.html
-OpenCV download address: 
+OpenCV download address: https://opencv.org/releases/
