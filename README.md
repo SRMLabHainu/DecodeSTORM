@@ -1,2 +1,3 @@
 # DecodeSTORM
-DecodeSTORM
+DecodeSTORM 
+# Installation and Use
