@@ -304,26 +304,26 @@ JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1Colocalization
 
 /*
  * Class:     DecodeSTORM_
- * Method:    lm_GetDoc1Hist
+ * Method:    lm_GetCBC1Hist
  * Signature: ()[D
  */
-JNIEXPORT jdoubleArray JNICALL Java_DecodeSTORM_1_lm_1GetDoc1Hist
+JNIEXPORT jdoubleArray JNICALL Java_DecodeSTORM_1_lm_1GetCBC1Hist
   (JNIEnv *, jclass);
 
 /*
  * Class:     DecodeSTORM_
- * Method:    lm_GetDoc2Hist
+ * Method:    lm_GetCBC2Hist
  * Signature: ()[D
  */
-JNIEXPORT jdoubleArray JNICALL Java_DecodeSTORM_1_lm_1GetDoc2Hist
+JNIEXPORT jdoubleArray JNICALL Java_DecodeSTORM_1_lm_1GetCBC2Hist
   (JNIEnv *, jclass);
 
 /*
  * Class:     DecodeSTORM_
- * Method:    lm_GetDocHistInfo
+ * Method:    lm_GetCBCHistInfo
  * Signature: ()[F
  */
-JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetDocHistInfo
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCBCHistInfo
   (JNIEnv *, jclass);
 
 /*
