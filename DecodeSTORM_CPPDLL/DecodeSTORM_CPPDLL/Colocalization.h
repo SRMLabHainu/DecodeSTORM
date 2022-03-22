@@ -7,7 +7,7 @@
 using namespace arma;
 
 
-extern float Radius, Rmax, Step, ColoThres;
+extern float Rmax, Step, ColoThres;
 extern double width, height;
 extern double* Doc1Array, * Doc2Array;
 extern int Doc1Size, Doc2Size;
