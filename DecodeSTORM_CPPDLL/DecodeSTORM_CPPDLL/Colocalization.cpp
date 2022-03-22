@@ -120,11 +120,10 @@ vec Colocalization::NearestSearch(const mat& matrix_1, const mat& matrix_2) {
 
 void Colocalization::ColocalizationCal(const mat& inLoc1, const mat& inLoc2, const string& PrefixName)
 {
-	
 
 
 	SizeROI = width * height;
-
+	
 	vec x1 = inLoc1.col(1);
 	vec y1 = inLoc1.col(2);
 	vec x2 = inLoc2.col(1);
@@ -205,17 +204,19 @@ void Colocalization::ColocalizationCal(const mat& inLoc1, const mat& inLoc2, con
 	vec NND2 = NearestSearch(inLoc1, inLoc2);
 	channel_2_CBC = SA2 % exp(-NND2 / Rmax);
 
-	CBC1Range = max(channel_1_CBC) - min(channel_1_CBC);
-	CBC2Range = max(channel_2_CBC) - min(channel_2_CBC);
-	CBC1Size = channel_1_CBC.size();
-	CBC2Size = channel_2_CBC.size();
-	CBC1Array = ArmaVecToArrayD(channel_1_CBC);
-	CBC2Array = ArmaVecToArrayD(channel_2_CBC);
-	
+	vec CBC_1 = channel_1_CBC;
+	vec CBC_2 = channel_2_CBC;
+	CBC1Range = max(CBC_1) - min(CBC_1);
+	CBC2Range = max(CBC_2) - min(CBC_2);
+	CBC1Size = CBC_1.size();
+	CBC2Size = CBC_2.size();
+	CBC1Array = ArmaVecToArrayD(CBC_1);
+	CBC2Array = ArmaVecToArrayD(CBC_2);
+
 	//Save percentage of colocalised Ch1 molecules and Percentage of colocalised Ch2 molecules
-	float Ch1_ColocAbove = sum(channel_1_CBC >= ColoThres);
+	float Ch1_ColocAbove = sum(CBC_1 >= ColoThres);
 	float Ch1_Num = inLoc1.n_rows;
-	float Ch2_ColocAbove = sum(channel_2_CBC >= ColoThres);
+	float Ch2_ColocAbove = sum(CBC_2 >= ColoThres);
 	float Ch2_Num = inLoc2.n_rows;
 	double Percent_Ch1_ColocAbove = Ch1_ColocAbove / Ch1_Num;
 	double Percent_Ch2_ColocAbove = Ch2_ColocAbove / Ch2_Num;
