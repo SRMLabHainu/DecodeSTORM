@@ -9,13 +9,11 @@ using namespace arma;
 
 extern float Rmax, Step, ColoThres;
 extern double width, height;
-extern double* Doc1Array, * Doc2Array;
-extern int Doc1Size, Doc2Size;
-extern float Doc1Range, Doc2Range;
-extern rowvec DoC_Results;
-struct Res {
-	mat Lr, Density;
-};
+extern double* CBC1Array, * CBC2Array;
+extern int CBC1Size, CBC2Size;
+extern float CBC1Range, CBC2Range;
+extern rowvec CBC_Results;
+
 
 class Colocalization
 {
