@@ -98,10 +98,10 @@ JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SetSpatialStatisticsPara
 /*
  * Class:     DecodeSTORM_
  * Method:    lm_SetColocalizationPara
- * Signature: (FFFFDD)V
+ * Signature: (FFFDD)V
  */
 JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SetColocalizationPara
-  (JNIEnv *, jclass, jfloat, jfloat, jfloat, jfloat, jdouble, jdouble);
+  (JNIEnv *, jclass, jfloat, jfloat, jfloat, jdouble, jdouble);
 
 /*
  * Class:     DecodeSTORM_
