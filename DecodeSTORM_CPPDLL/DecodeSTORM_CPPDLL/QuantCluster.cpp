@@ -72,6 +72,7 @@ void QuantCluster::RDF_Analyze(const mat& inLoc1, const mat& inLoc2) {
 	{
 		Gr(i) = DisMatByXr(i) / (2 * PI * density * RingWidth * (Xr(i + 1)));
 	}
+	Gr(0) = 0;
 	Xr.shed_row(Xr.n_rows - 1);
 	RdfBorderMax = ceil(max(Gr.col(0) * 1.1));
 	RdfBorderMin = floor(min(Gr.col(0) * 1.1));
