@@ -99,7 +99,7 @@ JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1Convert
 		ofstream OutTempFile(Directory + FileName + "_temp.txt", ios::out | ios::trunc);
 		while (!RawFile.eof()) {
 			getline(RawFile, line);
-			if (count != 0)//Èç¹ûÒªĞŞ¸ÄÄÚÈİ¾ÍÔÚÕâĞŞ¸ÄlineµÄÄÚÈİ,ÔÙ´æµ½ÎÄ¼şÖĞ¾ÍĞĞÁË
+			if (count != 0)//å¦‚æœè¦ä¿®æ”¹å†…å®¹å°±åœ¨è¿™ä¿®æ”¹lineçš„å†…å®¹,å†å­˜åˆ°æ–‡ä»¶ä¸­å°±è¡Œäº†
 				OutTempFile << line << endl;
 			count++;
 		}
@@ -114,7 +114,7 @@ JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1Convert
 		OutRawFile.close();
 		TempFile.close();
 		string TempFilePath = Directory + FileName + "_temp.txt";
-		remove(TempFilePath.c_str());//É¾³ıÖĞ¼äÎÄ¼ş
+		remove(TempFilePath.c_str());//åˆ é™¤ä¸­é—´æ–‡ä»¶
 		//Convert format
 		vector<vector<double>> LocVec;
 		vector<double>::iterator it;
@@ -124,7 +124,7 @@ JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1Convert
 		vector<double> LocVecRow;
 		while (Data >> value) {
 			i++;
-			LocVecRow.push_back(value);		//½«Êı¾İÑ¹Èë¶ÑÕ»¡£//
+			LocVecRow.push_back(value);		//å°†æ•°æ®å‹å…¥å †æ ˆã€‚//
 			if (i == 6)
 			{
 				i = 0;
@@ -295,12 +295,11 @@ JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SetSpatialStatisticsPara
 /*
  * Class:     DecodeSTORM_
  * Method:    lm_SetColocalizationPara
- * Signature: (FFFFDD)V
+ * Signature: (FFFDD)V
  */
 JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SetColocalizationPara
-(JNIEnv*, jclass, jfloat jRadius, jfloat jRmax, jfloat jStep, jfloat jColoThres, jdouble jwidth, jdouble jheight)
+(JNIEnv*, jclass, jfloat jRmax, jfloat jStep, jfloat jColoThres, jdouble jwidth, jdouble jheight)
 {
-	Radius = jRadius;
 	Rmax = jRmax;
 	Step = jStep;
 	ColoThres = jColoThres;
