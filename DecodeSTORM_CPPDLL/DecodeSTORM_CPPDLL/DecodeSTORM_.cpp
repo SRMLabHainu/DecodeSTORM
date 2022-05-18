@@ -242,9 +242,9 @@ JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SetSaveDir
  * Signature: (FFFFFF)V
  */
 JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SetFilteringPara
-(JNIEnv* env, jclass obj, jfloat jStDev, jfloat jdistThre, jfloat jRadThre, jfloat jImpThres, jfloat jMaxOffFrame, jfloat jMaxDis)
+(JNIEnv* env, jclass obj, jfloat jMinPts_NoiseFilter, jfloat jdistThre, jfloat jRadThre, jfloat jImpThres, jfloat jMaxOffFrame, jfloat jMaxDis)
 {
-	StDev = jStDev;
+	MinPts_NoiseFilter = jMinPts_NoiseFilter;
 	distThre = jdistThre;
 
 	RadThre = jRadThre;
@@ -470,6 +470,106 @@ JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetScatRoiImInfo
 	env->SetFloatArrayRegion(result, 0, 4, ScatRoiImInf);
 
 	return result;
+}
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_GetCh1RoiSMLMImage
+ * Signature: (FI)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCh1RoiSMLMImage
+(JNIEnv* env, jclass obj, jfloat JRawImPixSize, jint ZoomF) {
+
+	RawImPixSize = JRawImPixSize;
+
+	jfloatArray result = NULL;
+
+	float* receiver = Render(RawRoiLoc1, ZoomF);
+
+	int ImgSize = SRImageWidth * SRImageHeight;
+	result = env->NewFloatArray(ImgSize);
+
+	env->SetFloatArrayRegion(result, 0, ImgSize, receiver);
+
+	free(receiver);
+
+	return result;
+
+}
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_GetCh2RoiSMLMImage
+ * Signature: (FI)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCh2RoiSMLMImage
+(JNIEnv* env, jclass obj, jfloat JRawImPixSize, jint ZoomF) {
+
+	RawImPixSize = JRawImPixSize;
+
+	jfloatArray result = NULL;
+
+	float* receiver = Render(RawRoiLoc2, ZoomF);
+
+	int ImgSize = SRImageWidth * SRImageHeight;
+	result = env->NewFloatArray(ImgSize);
+
+	env->SetFloatArrayRegion(result, 0, ImgSize, receiver);
+
+	free(receiver);
+
+	return result;
+
+}
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_GetCh1ArtifactCorrRoiSMLMImage
+ * Signature: (FI)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCh1ArtifactCorrRoiSMLMImage
+(JNIEnv* env, jclass obj, jfloat JRawImPixSize, jint ZoomF) {
+
+	RawImPixSize = JRawImPixSize;
+
+	jfloatArray result = NULL;
+
+	float* receiver = Render(RoiLoc1, ZoomF);
+
+	int ImgSize = SRImageWidth * SRImageHeight;
+	result = env->NewFloatArray(ImgSize);
+
+	env->SetFloatArrayRegion(result, 0, ImgSize, receiver);
+
+	free(receiver);
+
+	return result;
+
+}
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_GetCh2ArtifactCorrRoiSMLMImage
+ * Signature: (FI)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCh2ArtifactCorrRoiSMLMImage
+(JNIEnv* env, jclass obj, jfloat JRawImPixSize, jint ZoomF) {
+
+	RawImPixSize = JRawImPixSize;
+
+	jfloatArray result = NULL;
+
+	float* receiver = Render(RoiLoc2, ZoomF);
+
+	int ImgSize = SRImageWidth * SRImageHeight;
+	result = env->NewFloatArray(ImgSize);
+
+	env->SetFloatArrayRegion(result, 0, ImgSize, receiver);
+
+	free(receiver);
+
+	return result;
+
 }
 
 /*
@@ -1122,16 +1222,44 @@ JNIEXPORT jobjectArray JNICALL Java_DecodeSTORM_1_lm_1GetRdfIm
 JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetRdfImInfo
 (JNIEnv* env, jclass obj) {
 
-	jfloatArray result = env->NewFloatArray(2);
+	jfloatArray result = env->NewFloatArray(3);
 
-	float RdfImInf[2];
+	float RdfImInf[3];
 
 	RdfImInf[0] = quantCluster.RdfBorderMax;
 	RdfImInf[1] = quantCluster.RdfBorderMin;
+	RdfImInf[2] = quantCluster.MaxGrId;
 
-	env->SetFloatArrayRegion(result, 0, 2, RdfImInf);
+	env->SetFloatArrayRegion(result, 0, 3, RdfImInf);
 
 	return result;
+
+}
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_SaveRdfResult
+ * Signature: (II)V
+ */
+JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SaveRdfResult
+(JNIEnv* env, jclass obj, jint ChanSele_1, jint ChanSele_2) {
+	string SaveNameRDF;
+	if (ChanSele_1 == 0 && ChanSele_2 == 0) {
+		SaveNameRDF = Chan1PrefixName + "_RDF Result.csv";
+	}
+	else if (ChanSele_1 == 0 && ChanSele_2 == 1) {
+		SaveNameRDF = Chan1PrefixName + "-" + Chan2PrefixName + "_RDF Result.csv";
+	}
+	else if (ChanSele_1 == 1 && ChanSele_2 == 0) {
+		SaveNameRDF = Chan2PrefixName + "-" + Chan1PrefixName + "_RDF Result.csv";
+	}
+	else {
+		SaveNameRDF = Chan2PrefixName + " _RDF Result.csv";;
+	}
+	string RipCsv_path = Directory + "\\SpatialStatisticsResults\\" + SaveNameRDF;
+	field<std::string> header(RDF_Result.n_cols);
+	header = { "G(r)","r" };
+	RDF_Result.save(csv_name(RipCsv_path, header));
 
 }
 
@@ -1240,7 +1368,7 @@ JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SaveRipleyResult
 	}
 	string RipCsv_path = Directory + "\\SpatialStatisticsResults\\" + SaveNameRipleyH;
 	field<std::string> header(RipleyH_Result.n_cols);
-	header = { "H(r)","r" };
+	header = { "H(r)","r"};
 	RipleyH_Result.save(csv_name(RipCsv_path, header));
 
 }

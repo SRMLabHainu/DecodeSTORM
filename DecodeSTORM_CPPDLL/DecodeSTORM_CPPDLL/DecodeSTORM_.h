@@ -150,6 +150,39 @@ JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetScatImInfo
  */
 JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetScatRoiImInfo
 (JNIEnv*, jclass, jboolean, jboolean);
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_GetCh1RoiSMLMImage
+ * Signature: (FI)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCh1RoiSMLMImage
+(JNIEnv*, jclass, jfloat, jint);
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_GetCh2RoiSMLMImage
+ * Signature: (FI)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCh2RoiSMLMImage
+(JNIEnv*, jclass, jfloat, jint);
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_GetCh1ArtifactCorrRoiSMLMImage
+ * Signature: (FI)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCh1ArtifactCorrRoiSMLMImage
+(JNIEnv*, jclass, jfloat, jint);
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_GetCh2ArtifactCorrRoiSMLMImage
+ * Signature: (FI)[F
+ */
+JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetCh2ArtifactCorrRoiSMLMImage
+(JNIEnv*, jclass, jfloat, jint);
+
 /*
  * Class:     DecodeSTORM_
  * Method:    lm_GetCh1SMLMImage
@@ -213,6 +246,14 @@ JNIEXPORT jobjectArray JNICALL Java_DecodeSTORM_1_lm_1GetRdfIm
  */
 JNIEXPORT jfloatArray JNICALL Java_DecodeSTORM_1_lm_1GetRdfImInfo
   (JNIEnv *, jclass);
+
+/*
+ * Class:     DecodeSTORM_
+ * Method:    lm_SaveRdfResult
+ * Signature: (II)V
+ */
+JNIEXPORT void JNICALL Java_DecodeSTORM_1_lm_1SaveRdfResult
+ (JNIEnv*, jclass, jint, jint);
 
 /*
  * Class:     DecodeSTORM_
