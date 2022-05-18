@@ -53,7 +53,7 @@ public class DecodeSTORM_ implements PlugInFilter {
     //set parameters
     public native static void lm_SetSaveDir(String ResultSaveDir);
 
-    public native static void lm_SetFilteringPara(float StDev, float distThre, float RadThre, float UnprecThres, float MaxOffFrame, float MaxDis);
+    public native static void lm_SetFilteringPara(float MinPts, float distThre, float RadThre, float UnprecThres, float MaxOffFrame, float MaxDis);
 
     public native static void lm_SetDriftCorrPara(int IsDriftCorrectionI, int DriftCorrGroupFrameNum, float RawImPixSize);
 
@@ -76,6 +76,13 @@ public class DecodeSTORM_ implements PlugInFilter {
 
     public native static float[] lm_GetScatRoiImInfo(boolean Ch1Exist, boolean Ch2Exist);
     //Gasussian Render
+    public native static float[] lm_GetCh1RoiSMLMImage(float RawImgPixelSize, int PixelZoom);
+    
+    public native static float[] lm_GetCh2RoiSMLMImage(float RawImgPixelSize, int PixelZoom);
+    
+    public native static float[] lm_GetCh1ArtifactCorrRoiSMLMImage(float RawImgPixelSize, int PixelZoom);
+    
+    public native static float[] lm_GetCh2ArtifactCorrRoiSMLMImage(float RawImgPixelSize, int PixelZoom);
 
     public native static float[] lm_GetCh1SMLMImage(float RawImgPixelSize, int PixelZoom);
 
@@ -95,6 +102,8 @@ public class DecodeSTORM_ implements PlugInFilter {
     public native static double[][] lm_GetRdfIm(int ChanSele_1, int ChanSele_2, int isLinkPostStatistic);
 
     public native static float[] lm_GetRdfImInfo();
+    
+    public native static void lm_SaveRdfResult(int ChanSele_1, int ChanSele_2);
 
     public native static double[][] lm_GetRipleyHIm(int ChanSele_1, int ChanSele_2, int isLinkPostStatistic);
 
@@ -327,19 +336,30 @@ public class DecodeSTORM_ implements PlugInFilter {
         @Override
         public void run() {
 
-            int PixelZoom = (int) (MyConfigurator.RawImPixSize / MyConfigurator.RenderPixSize);
+            int PixelZoom = (int) (MyConfigurator.RawImPixSizeForRender / MyConfigurator.RenderPixSize);
             ColorModel hotCM = GetHotColorModel();
             ImagePlus Ch1ImagePlus = new ImagePlus();
             ImagePlus Ch2ImagePlus = new ImagePlus();
             FileSaver RenderingTifSaver;
             if (MyConfigurator.RenderCh1Enable == 1) {
-                float RecImgF[] = lm_GetCh1SMLMImage(MyConfigurator.RawImPixSize, PixelZoom);
+                float RecImgF[];
+                String RenderTitle;
+                if(MyConfigurator.RenderRoiEnable == 1){
+                 RecImgF = lm_GetCh1RoiSMLMImage(MyConfigurator.RawImPixSizeForRender, PixelZoom);
+                 RenderTitle = "Channel_1 Roi Render Image";
+                }else if(MyConfigurator.RenderArtifactCorrRoiEnable == 1){
+                 RecImgF = lm_GetCh1ArtifactCorrRoiSMLMImage(MyConfigurator.RawImPixSizeForRender, PixelZoom);
+                 RenderTitle = "Channel_1 ArtifactCorrRoi Render Image";
+                }else{
+                 RecImgF = lm_GetCh1SMLMImage(MyConfigurator.RawImPixSizeForRender, PixelZoom);
+                 RenderTitle = "Channel_1 Render Image";
+                }
                 if (RecImgF.length > 10) {
                     int[] RenderImInfo = lm_GetRenderImageInf();
                     FloatProcessor Ch1ImageProcessor2D = new FloatProcessor(RenderImInfo[0], RenderImInfo[1]);
                     Ch1ImageProcessor2D.setPixels(RecImgF);
                     Ch1ImageProcessor2D.setColorModel(hotCM);
-                    Ch1ImagePlus.setTitle("Channel_1 Render Image");
+                    Ch1ImagePlus.setTitle(RenderTitle);
                     Ch1ImagePlus.setProcessor(Ch1ImageProcessor2D);
                     Ch1ImagePlus.setDisplayRange(0, lm_GetMaxDispVal());
                     Ch1ImagePlus.show();
@@ -357,13 +377,24 @@ public class DecodeSTORM_ implements PlugInFilter {
             }
 
             if (MyConfigurator.RenderCh2Enable == 1) {
-                float RecImgF[] = lm_GetCh2SMLMImage(MyConfigurator.RawImPixSize, PixelZoom);
+                float RecImgF[];
+                String RenderTitle;
+                if(MyConfigurator.RenderRoiEnable == 1){
+                 RecImgF = lm_GetCh2RoiSMLMImage(MyConfigurator.RawImPixSizeForRender, PixelZoom);
+                 RenderTitle = "Channel_2 Roi Render Image";
+                }else if(MyConfigurator.RenderArtifactCorrRoiEnable == 1){
+                 RecImgF = lm_GetCh2ArtifactCorrRoiSMLMImage(MyConfigurator.RawImPixSizeForRender, PixelZoom);
+                 RenderTitle = "Channel_2 ArtifactCorrRoi Render Image";
+                }else{
+                 RecImgF = lm_GetCh2SMLMImage(MyConfigurator.RawImPixSizeForRender, PixelZoom);
+                 RenderTitle = "Channel_2 Render Image";
+                }
                 if (RecImgF.length > 10) {
                     int[] RenderImInfo = lm_GetRenderImageInf();
                     FloatProcessor Ch2ImageProcessor2D = new FloatProcessor(RenderImInfo[0], RenderImInfo[1]);
                     Ch2ImageProcessor2D.setPixels(RecImgF);
                     Ch2ImageProcessor2D.setColorModel(hotCM);
-                    Ch2ImagePlus.setTitle("Channel_2 Render Image");
+                    Ch2ImagePlus.setTitle(RenderTitle);
                     Ch2ImagePlus.setProcessor(Ch2ImageProcessor2D);
                     Ch2ImagePlus.setDisplayRange(0, lm_GetMaxDispVal());
                     Ch2ImagePlus.show();
@@ -493,6 +524,10 @@ public class DecodeSTORM_ implements PlugInFilter {
                 double[][] XG = lm_GetRdfIm(MyConfigurator.ChanSele_1, MyConfigurator.ChanSele_2, MyConfigurator.LinkPostStatisticEnable);
                 float[] RdfImageInfo = lm_GetRdfImInfo();
                 SpatialStatisticsPlot.add("lines", XG[0], XG[1]);
+                String MaxGrID = Float.toString(RdfImageInfo[2]);
+                String GrBorderMax = Float.toString(RdfImageInfo[0]);
+                String Lable = "Max G(r): " + GrBorderMax + " at Max r: " + MaxGrID;
+                SpatialStatisticsPlot.addLabel(0.5, 0, Lable);
                 SpatialStatisticsPlot.setLimits(0, MyConfigurator.MaxAnaDis, RdfImageInfo[1], RdfImageInfo[0]);
                 SpatialStatisticsPlot.show();
 
@@ -515,6 +550,7 @@ public class DecodeSTORM_ implements PlugInFilter {
                     SpatialStatisticsImPlus = SpatialStatisticsPlot.getImagePlus();
                     SpatialStatisticsTifSaver = new FileSaver(SpatialStatisticsImPlus);
                     SpatialStatisticsTifSaver.saveAsTiff(SpatialStatisticsSaveDir + "\\" + SaveImName);
+                    lm_SaveRdfResult(MyConfigurator.ChanSele_1, MyConfigurator.ChanSele_2);
                 }
             }
 
@@ -525,8 +561,8 @@ public class DecodeSTORM_ implements PlugInFilter {
                 float[] RipleyImageInfo = lm_GetRipleyImInfo();
                 SpatialStatisticsPlot.add("lines", XH[0], XH[1]);
                 String MaxHrID = Float.toString(RipleyImageInfo[2]);
-                String BorderMax = Float.toString(RipleyImageInfo[0]);
-                String Lable = "Max L(r)-r: " + BorderMax + " at Max r: " + MaxHrID;
+                String HrBorderMax = Float.toString(RipleyImageInfo[0]);
+                String Lable = "Max L(r)-r: " + HrBorderMax + " at Max r: " + MaxHrID;
                 SpatialStatisticsPlot.addLabel(0.5, 0, Lable);
                 SpatialStatisticsPlot.setLimits(0, MyConfigurator.MaxAnaDis, RipleyImageInfo[1], RipleyImageInfo[0]);
                 SpatialStatisticsPlot.show();
@@ -551,6 +587,7 @@ public class DecodeSTORM_ implements PlugInFilter {
                     SpatialStatisticsTifSaver = new FileSaver(SpatialStatisticsImPlus);
                     SpatialStatisticsTifSaver.saveAsTiff(SpatialStatisticsSaveDir + "\\" + SaveImName);
                     lm_SaveRipleyResult(MyConfigurator.ChanSele_1, MyConfigurator.ChanSele_2);
+                  
                 }
             }
 

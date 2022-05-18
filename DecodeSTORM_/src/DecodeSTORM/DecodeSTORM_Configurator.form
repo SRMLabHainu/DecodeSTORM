@@ -66,8 +66,8 @@
         <Container class="javax.swing.JPanel" name="jPanel8">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Format Convert">
-                <Property name="tabTitle" type="java.lang.String" value="Format Convert"/>
+              <JTabbedPaneConstraints tabName="Format convert">
+                <Property name="tabTitle" type="java.lang.String" value="Format convert"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -173,8 +173,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Channel Register">
-                <Property name="tabTitle" type="java.lang.String" value="Channel Register"/>
+              <JTabbedPaneConstraints tabName="Channel register">
+                <Property name="tabTitle" type="java.lang.String" value="Channel register"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -303,8 +303,8 @@
         <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Artifact correction">
-                <Property name="tabTitle" type="java.lang.String" value="Artifact correction"/>
+              <JTabbedPaneConstraints tabName="Artifact crorrection">
+                <Property name="tabTitle" type="java.lang.String" value="Artifact crorrection"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -314,8 +314,8 @@
             <Container class="javax.swing.JPanel" name="jPanel1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Drift Correction">
-                    <Property name="tabTitle" type="java.lang.String" value="Drift Correction"/>
+                  <JTabbedPaneConstraints tabName="Drift correction">
+                    <Property name="tabTitle" type="java.lang.String" value="Drift correction"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -471,8 +471,8 @@
             <Container class="javax.swing.JPanel" name="jPanel6">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Filtering">
-                    <Property name="tabTitle" type="java.lang.String" value="Filtering"/>
+                  <JTabbedPaneConstraints tabName="Localizations filtering">
+                    <Property name="tabTitle" type="java.lang.String" value="Localizations filtering"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -630,7 +630,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_UnpThre">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="20"/>
+                    <Property name="text" type="java.lang.String" value="40"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_UnpThreActionPerformed"/>
@@ -646,12 +646,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Standard Deviations:"/>
+                    <Property name="text" type="java.lang.String" value="MinPts:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_StDev">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="-1"/>
+                    <Property name="text" type="java.lang.String" value="20"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_StDevActionPerformed"/>
@@ -664,7 +664,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_DistThre">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="40"/>
+                    <Property name="text" type="java.lang.String" value="200"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_DistThreActionPerformed"/>
@@ -682,7 +682,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_FilterRadius">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="20"/>
+                    <Property name="text" type="java.lang.String" value="100"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox_Merge">
@@ -702,7 +702,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_MaxFrameInterval">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="1"/>
+                    <Property name="text" type="java.lang.String" value="50"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_MaxFrameIntervalActionPerformed"/>
@@ -710,7 +710,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_TwoEventsMaxDis">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="5"/>
+                    <Property name="text" type="java.lang.String" value="200"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox_FilterChannel1">
@@ -760,8 +760,8 @@
             <Container class="javax.swing.JPanel" name="jPanel3">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Spatial Statistics">
-                    <Property name="tabTitle" type="java.lang.String" value="Spatial Statistics"/>
+                  <JTabbedPaneConstraints tabName="Spatial distribution  statistics">
+                    <Property name="tabTitle" type="java.lang.String" value="Spatial distribution  statistics"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -864,7 +864,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_MaxAnaDis">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="280"/>
+                    <Property name="text" type="java.lang.String" value="300"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_MaxAnaDisActionPerformed"/>
@@ -906,7 +906,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_RingWidth">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="10"/>
+                    <Property name="text" type="java.lang.String" value="2"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_RingWidthActionPerformed"/>
@@ -935,8 +935,8 @@
             <Container class="javax.swing.JPanel" name="jPanel2">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Segmentation and Cluster">
-                    <Property name="tabTitle" type="java.lang.String" value="Segmentation and Cluster"/>
+                  <JTabbedPaneConstraints tabName="Segmentation and cluster">
+                    <Property name="tabTitle" type="java.lang.String" value="Segmentation and cluster"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1025,12 +1025,12 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_MinPts">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="15"/>
+                    <Property name="text" type="java.lang.String" value="5"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField_Eps">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="50"/>
+                    <Property name="text" type="java.lang.String" value="100"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_EpsActionPerformed"/>
@@ -1233,8 +1233,8 @@
         <Container class="javax.swing.JPanel" name="jPanel7">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Rendering">
-                <Property name="tabTitle" type="java.lang.String" value="Rendering"/>
+              <JTabbedPaneConstraints tabName="Visualization">
+                <Property name="tabTitle" type="java.lang.String" value="Visualization"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -1243,51 +1243,76 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-                      <Component id="jCheckBox_RenderCh1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="136" max="32767" attributes="0"/>
-                      <Component id="jCheckBox_RenderCh2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox_RenderSave" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jCheckBox_ArtifactCorrROI" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox_RenderSave" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox_ROI" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="315" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="jTextField_RenderPixSize" min="-2" pref="43" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
-                              <Component id="jButton_Rendering" min="-2" pref="138" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jTextField_RawImPixSizeForRender" pref="43" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jTextField_RenderPixSize" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                      <Component id="jCheckBox_RenderCh1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
+                      <Component id="jCheckBox_RenderCh2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton_Rendering" min="-2" pref="138" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_RawImPixSizeForRender" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField_RenderPixSize" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jCheckBox_ROI" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jCheckBox_ArtifactCorrROI" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jCheckBox_RenderCh1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jCheckBox_RenderCh2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                       <Component id="jCheckBox_RenderSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton_Rendering" min="-2" pref="46" max="-2" attributes="0"/>
-                      <EmptySpace pref="345" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1325,6 +1350,35 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save results"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox_ROI">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ROI"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox_ROIActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox_ArtifactCorrROI">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ROI link artifact correction "/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox_ArtifactCorrROIActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel26">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Raw image pixel size(nm): "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField_RawImPixSizeForRender">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="100"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField_RawImPixSizeForRenderActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

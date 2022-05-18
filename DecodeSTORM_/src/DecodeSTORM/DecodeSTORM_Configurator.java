@@ -24,9 +24,11 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
     public String DataPathChan1 = null;
     public String DataPathChan2 = null;
     //Rendering
+    public int RenderRoiEnable = 0;
+    public int RenderArtifactCorrRoiEnable = 0;
     public int RenderCh1Enable = 0;
     public int RenderCh2Enable = 0;
-    public float RawImPixSize = 100;
+    public float RawImPixSizeForRender = 100;
     public int RenderPixSize = 10;
     public int RenderSave = 0;
     //DriftCorr Enable
@@ -36,6 +38,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
     public int DriftCorrSave = 0;
     public int DriftCorrGPU = 0;
     public int DriftCorrGroupFrameNum = 500;
+    public float RawImPixSize = 100;
     //Filtering Enable
     public int DenFiltEnable = 0;
     public int DupFiltEnable = 0;
@@ -195,6 +198,10 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jTextField_RenderPixSize = new javax.swing.JTextField();
         jCheckBox_RenderSave = new javax.swing.JCheckBox();
+        jCheckBox_ROI = new javax.swing.JCheckBox();
+        jCheckBox_ArtifactCorrROI = new javax.swing.JCheckBox();
+        jLabel26 = new javax.swing.JLabel();
+        jTextField_RawImPixSizeForRender = new javax.swing.JTextField();
         jTextField_ResultPath = new javax.swing.JTextField();
         jButton_LoadResultPath = new javax.swing.JButton();
 
@@ -270,7 +277,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
                 .addContainerGap(377, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Format Convert", jPanel8);
+        jTabbedPane1.addTab("Format convert", jPanel8);
 
         jPanel4.setPreferredSize(new java.awt.Dimension(569, 533));
 
@@ -362,7 +369,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
                 .addContainerGap(303, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Channel Register", jPanel4);
+        jTabbedPane1.addTab("Channel register", jPanel4);
 
         jCheckBox_DriftCorrection.setText("Drift correction by cross correlation");
         jCheckBox_DriftCorrection.addActionListener(new java.awt.event.ActionListener() {
@@ -478,7 +485,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
                 .addContainerGap(225, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Drift Correction", jPanel1);
+        jTabbedPane3.addTab("Drift correction", jPanel1);
 
         jCheckBox_UnpFilt.setText("Remove imprecisions ");
         jCheckBox_UnpFilt.addActionListener(new java.awt.event.ActionListener() {
@@ -489,7 +496,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
 
         jLabel34.setText("Unprecision  Threshold:");
 
-        jTextField_UnpThre.setText("20");
+        jTextField_UnpThre.setText("40");
         jTextField_UnpThre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_UnpThreActionPerformed(evt);
@@ -503,9 +510,9 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
             }
         });
 
-        jLabel27.setText("Standard Deviations:");
+        jLabel27.setText("MinPts:");
 
-        jTextField_StDev.setText("-1");
+        jTextField_StDev.setText("20");
         jTextField_StDev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_StDevActionPerformed(evt);
@@ -514,7 +521,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
 
         jLabel32.setText("Radius[nm]");
 
-        jTextField_DistThre.setText("40");
+        jTextField_DistThre.setText("200");
         jTextField_DistThre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_DistThreActionPerformed(evt);
@@ -525,7 +532,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
 
         jLabel33.setText("Distance Threshold[nm]:");
 
-        jTextField_FilterRadius.setText("20");
+        jTextField_FilterRadius.setText("100");
 
         jCheckBox_Merge.setText("Merge reappearing molecules  ");
 
@@ -533,14 +540,14 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
 
         jLabel36.setText("Max distance between localizations[nm]:");
 
-        jTextField_MaxFrameInterval.setText("1");
+        jTextField_MaxFrameInterval.setText("50");
         jTextField_MaxFrameInterval.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_MaxFrameIntervalActionPerformed(evt);
             }
         });
 
-        jTextField_TwoEventsMaxDis.setText("5");
+        jTextField_TwoEventsMaxDis.setText("200");
 
         jCheckBox_FilterChannel1.setText("Channel 1");
         jCheckBox_FilterChannel1.addActionListener(new java.awt.event.ActionListener() {
@@ -671,9 +678,9 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
                 .addGap(60, 60, 60))
         );
 
-        jTabbedPane3.addTab("Filtering", jPanel6);
+        jTabbedPane3.addTab("Localizations filtering", jPanel6);
 
-        jTabbedPane1.addTab("Artifact correction", jTabbedPane3);
+        jTabbedPane1.addTab("Artifact crorrection", jTabbedPane3);
 
         jCheckBox_RDF.setText("Radial Distribution Fuction");
 
@@ -681,7 +688,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
 
         jLabel37.setText("Max Analysis Distance[nm]:");
 
-        jTextField_MaxAnaDis.setText("280");
+        jTextField_MaxAnaDis.setText("300");
         jTextField_MaxAnaDis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_MaxAnaDisActionPerformed(evt);
@@ -709,7 +716,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
             }
         });
 
-        jTextField_RingWidth.setText("10");
+        jTextField_RingWidth.setText("2");
         jTextField_RingWidth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_RingWidthActionPerformed(evt);
@@ -791,15 +798,15 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
                 .addGap(188, 188, 188))
         );
 
-        jTabbedPane2.addTab("Spatial Statistics", jPanel3);
+        jTabbedPane2.addTab("Spatial distribution  statistics", jPanel3);
 
         jCheckBox_DBSCAN.setText("DBSCAN");
 
         jLabel38.setText("MinPts:");
 
-        jTextField_MinPts.setText("15");
+        jTextField_MinPts.setText("5");
 
-        jTextField_Eps.setText("50");
+        jTextField_Eps.setText("100");
         jTextField_Eps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_EpsActionPerformed(evt);
@@ -899,7 +906,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
                 .addGap(180, 180, 180))
         );
 
-        jTabbedPane2.addTab("Segmentation and Cluster", jPanel2);
+        jTabbedPane2.addTab("Segmentation and cluster", jPanel2);
 
         jCheckBox_ClusDoc.setText("Coordinate-based colocalization ");
         jCheckBox_ClusDoc.addActionListener(new java.awt.event.ActionListener() {
@@ -1020,50 +1027,92 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
 
         jCheckBox_RenderSave.setText("Save results");
 
+        jCheckBox_ROI.setText("ROI");
+        jCheckBox_ROI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox_ROIActionPerformed(evt);
+            }
+        });
+
+        jCheckBox_ArtifactCorrROI.setText("ROI link artifact correction ");
+        jCheckBox_ArtifactCorrROI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox_ArtifactCorrROIActionPerformed(evt);
+            }
+        });
+
+        jLabel26.setText("Raw image pixel size(nm): ");
+
+        jTextField_RawImPixSizeForRender.setText("100");
+        jTextField_RawImPixSizeForRender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_RawImPixSizeForRenderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jCheckBox_RenderCh1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(jCheckBox_RenderCh2)
-                .addGap(116, 116, 116))
-            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jCheckBox_RenderSave))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox_ArtifactCorrROI)
+                            .addComponent(jCheckBox_RenderSave)
+                            .addComponent(jCheckBox_ROI))
+                        .addContainerGap(315, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel24)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel26))
                         .addGap(34, 34, 34)
-                        .addComponent(jTextField_RenderPixSize, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jButton_Rendering, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jTextField_RawImPixSizeForRender, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                                .addGap(281, 281, 281))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jTextField_RenderPixSize, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(jCheckBox_RenderCh1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addComponent(jCheckBox_RenderCh2)
+                .addGap(115, 115, 115))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton_Rendering, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(192, 192, 192))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel26)
+                    .addComponent(jTextField_RawImPixSizeForRender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(jTextField_RenderPixSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox_ROI)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox_ArtifactCorrROI)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox_RenderCh1)
                     .addComponent(jCheckBox_RenderCh2))
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jCheckBox_RenderSave)
                 .addGap(18, 18, 18)
                 .addComponent(jButton_Rendering, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addGap(244, 244, 244))
         );
 
-        jTabbedPane1.addTab("Rendering", jPanel7);
+        jTabbedPane1.addTab("Visualization", jPanel7);
 
         jTextField_ResultPath.setText("D:\\");
             jTextField_ResultPath.addActionListener(new java.awt.event.ActionListener() {
@@ -1284,9 +1333,11 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox_DriftCorrectionActionPerformed
 
     private void jButton_RenderingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RenderingActionPerformed
+        RenderRoiEnable = jCheckBox_ROI.isSelected() ? 1 : 0;
+        RenderArtifactCorrRoiEnable = jCheckBox_ArtifactCorrROI.isSelected() ? 1 : 0;
         RenderCh1Enable = jCheckBox_RenderCh1.isSelected() ? 1 : 0;
         RenderCh2Enable = jCheckBox_RenderCh2.isSelected() ? 1 : 0;
-        RawImPixSize =  Float.parseFloat(jTextField_RawImPixSize.getText());
+        RawImPixSizeForRender =  Float.parseFloat(jTextField_RawImPixSizeForRender.getText());
         RenderPixSize = Integer.parseInt(jTextField_RenderPixSize.getText());
         RenderSave = jCheckBox_RenderSave.isSelected() ? 1 : 0;
         if (RenderCh1Enable == 1) {
@@ -1641,6 +1692,18 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox_DriftCorrGPUActionPerformed
 
+    private void jCheckBox_ArtifactCorrROIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_ArtifactCorrROIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox_ArtifactCorrROIActionPerformed
+
+    private void jCheckBox_ROIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_ROIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox_ROIActionPerformed
+
+    private void jTextField_RawImPixSizeForRenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_RawImPixSizeForRenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_RawImPixSizeForRenderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1689,6 +1752,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Rendering;
     private javax.swing.JButton jButton_SelectROI;
     private javax.swing.JButton jButton_SpatialStatistics;
+    private javax.swing.JCheckBox jCheckBox_ArtifactCorrROI;
     private javax.swing.JCheckBox jCheckBox_ClusDoc;
     private javax.swing.JCheckBox jCheckBox_ClusterChannel1;
     private javax.swing.JCheckBox jCheckBox_ClusterChannel2;
@@ -1708,6 +1772,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox_LinkPostStatistic;
     private javax.swing.JCheckBox jCheckBox_Merge;
     private javax.swing.JCheckBox jCheckBox_RDF;
+    private javax.swing.JCheckBox jCheckBox_ROI;
     private javax.swing.JCheckBox jCheckBox_RemoveDup;
     private javax.swing.JCheckBox jCheckBox_RenderCh1;
     private javax.swing.JCheckBox jCheckBox_RenderCh2;
@@ -1724,6 +1789,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -1763,6 +1829,7 @@ public class DecodeSTORM_Configurator extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_MinPts;
     private javax.swing.JTextField jTextField_RMax;
     private javax.swing.JTextField jTextField_RawImPixSize;
+    private javax.swing.JTextField jTextField_RawImPixSizeForRender;
     private javax.swing.JTextField jTextField_RenderPixSize;
     private javax.swing.JTextField jTextField_ResultPath;
     private javax.swing.JTextField jTextField_RingWidth;
