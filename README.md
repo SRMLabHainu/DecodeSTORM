@@ -11,7 +11,7 @@ DecodeSTORM is an user-friendly ImageJ plug-in for quantitative analysis data in
 **Note: please set at least 6 GB memory buffer for ImageJ, Micro-Manager and ImageJ of Micro-Manager.**
 (The 64 bits ImageJ with Java 1.8 works well and can be downloaded at https://imagej.nih.gov/ij/download.html)
 
-4, Download and install Microsoft Visual C++ 2015 Redistributable Update 3 (x64) (https://www.microsoft.com/en-us/download/details.aspx?id=53587). You may need to uninstall Visual C++ 2017 Redistributable first.
+4, Download and install Microsoft Visual C++ 2015-2022 Redistributable (x64) (https://learn.microsoft.com/zh-cn/cpp/windows/latest-supported-vc-redist?view=msvc-160). 
 
 5, Download the newest DecodeSTORM release from https://github.com/SRMLabHainu/DecodeSTORM/releases.
 
