@@ -1,2 +1,0 @@
-DecodeSTORM_CPPDLL//DecodeSTORM_CPPDLL.sln filter=lfs diff=lfs merge=lfs -text
-DecodeSTORM_CPPDLL//x64 filter=lfs diff=lfs merge=lfs -text
