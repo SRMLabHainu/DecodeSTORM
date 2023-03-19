@@ -1,5 +1,6 @@
 # DecodeSTORM
 [![DOI](https://img.shields.io/badge/DOI-10.1038%2Fs41592--022--01541--z-%23403075)](https://doi.org/10.1142/S1793545823500062)
+
 DecodeSTORM is an user-friendly ImageJ plug-in for quantitative analysis data in single-molecule localization microscopy. DecodeSTORM classifies and modularizes various methods that are useful in SMLM data analysis, including format conversion, channel registration, artifact correction (containing drift correction and localizations filtering), quantitative analysis (containing segmentation and clustering, spatial distribution statistics and colocalization) and visualization. The modularized methods can be combined freely, and thus allow users to have an optimal combination of methods to improving the accuracy of quantitative data analysis.For more details, please refer to user‘s guide.pdf and our paper DecodeSTORM: A user-friendly ImageJ plug-in for quantitative data analysis in single-molecule localization microscopy.
 # System requirements and installation
 1, Windows 7 sp1 or newer, x64.
